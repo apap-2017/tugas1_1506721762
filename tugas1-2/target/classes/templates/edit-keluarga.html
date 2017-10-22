@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Ubah Keluarga</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">SI Kependudukan</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="#">Home</a></li>
+		      <li><a href="#">Cari Data</a></li>
+		    </ul>
+		  </div>
+		</nav>
+	<div class="container">
+		<h1 class="page-header">Ubah Keluarga</h1>
+		<form th:action="'/keluarga/ubah/'+${keluarga.nomor_kk}" method="post" th:object="${keluarga}">
+		<input type="hidden" th:value="${keluarga.nomor_kk}" th:field="${keluarga.nomor_kk}"/>
+		<div class="form-group">
+			<label for="alamat">Alamat</label> <input type="text" th:value="${keluarga.alamat}" name="alamat" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label for="rt">RT</label> <input type="text" name="rt" th:value="${keluarga.rt}" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label for="rw">RW</label> <input type="text" name="rw" th:value="${keluarga.rw}" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label for="kelurahan">Kelurahan/Desa</label> <input type="text" name="kelurahan" class="form-control" th:value="${keluarga.kelurahan}"/>
+		</div>
+		<div class="form-group">
+			<label for="kecamatan">Kecamatan</label> <input type="text" name="kecamatan" class="form-control" th:value="${keluarga.kecamatan}"/>
+		</div>
+		<div class="form-group">
+			<label for="kota">Kota</label> <input type="text" name="kota" th:value="${keluarga.kota}" class="form-control"/>
+		</div>
+		<button type="submit" class="btn btn-primary">Ubah</button>
+	</form>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cari Penduduk</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">SI Kependudukan</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="#">Home</a></li>
+		      <li><a href="#">Cari Data</a></li>
+		    </ul>
+		  </div>
+		</nav>
+		<div class="container">
+		<h1 th:text="'Lihat Data Penduduk Berdasarkan Kota ' + ${kota.nama_kota}">Lihat Data Penduduk</h1> 
+			<form action="/penduduk/cari" method="get">
+		<div class="form-group">
+			<label for="kota">Kota</label> 
+			<select name="kt"  class="form-control">
+				<option th:value="${kota.id}" th:text="${kota.nama_kota}" readonly="true"></option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="Kecamatan">Kecamatan</label> 
+			<select name="kc"  class="form-control">
+				<div th:each="kecamatan, iterationStatus: ${kecamatans}">
+					<option class="form-control" th:value="${kecamatan.id}" th:text="${kecamatan.nama_kecamatan}"></option>
+				</div>
+			</select>
+		</div>
+		<div>
+			<button class="btn btn-primary" type="submit">Cari</button>
+		</div>
+	</form>
+		</div>
+</body>
+</html>
+
